@@ -25,9 +25,14 @@ public class Main {
     public static void color() {
         int senterX = RobotHelper.getScrenSize().width / 2;
         int senterY = RobotHelper.getScrenSize().height / 2;
-        int buttonX = senterY - 142;
+        int buttonX = senterX - 142;
         int buttonY = RobotHelper.getScrenSize().height - 68;
 
+        RobotHelper.delay(5000);
+        RobotHelper.mouseMove(senterX, senterY);
+        RobotHelper.delay(5000);
+        RobotHelper.mouseMove(buttonX, buttonY);
+        RobotHelper.delay(5000);
 
         while (true) {
             RobotHelper.mouseMove(senterX, senterY);

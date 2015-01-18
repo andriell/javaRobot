@@ -28,32 +28,32 @@ public class RobotHelper {
     }
 
     public static void delay(int ms) {
-        robot.delay(ms);
+        robot().delay(ms);
     }
 
     public static void delay(int msMin, int msMax) {
-        robot.delay(msMin + (int)(Math.random() * ((msMin - msMin) + 1)));
+        robot().delay(msMin + (int)(Math.random() * ((msMin - msMin) + 1)));
     }
 
     public static void mouseMove(int x, int y) {
         System.out.println(String.format("mouseMove %dx%d", x, y));
         robot().mouseMove(x, y);
-        robot.delay(100);
+        robot().delay(100);
     }
 
     public static void mouseLeftClick() {
         System.out.println("mouseLeftClick");
-        robot.mousePress(InputEvent.BUTTON1_MASK);
-        robot.delay(300);
-        robot.mouseRelease(InputEvent.BUTTON1_MASK);
-        robot.delay(100);
+        robot().mousePress(InputEvent.BUTTON1_MASK);
+        robot().delay(300);
+        robot().mouseRelease(InputEvent.BUTTON1_MASK);
+        robot().delay(100);
     }
 
     public static void keyPress(int keycode) {
-        robot.keyPress(keycode);
-        robot.delay(300);
-        robot.keyRelease(keycode);
-        robot.delay(100);
+        robot().keyPress(keycode);
+        robot().delay(300);
+        robot().keyRelease(keycode);
+        robot().delay(100);
     }
 
     public static Color getPixelColor(int x, int y) {
