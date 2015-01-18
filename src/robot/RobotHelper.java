@@ -2,16 +2,16 @@ package robot;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
+import java.util.Random;
 
 /**
  * Created by Андрей on 18.01.15.
  */
 public class RobotHelper {
     private static Robot robot;
+    private static Dimension dimension;
 
-    private RobotHelper() {
-    }
+    private RobotHelper() {}
 
     public static synchronized Robot robot() {
         if (robot == null) {
@@ -29,6 +29,10 @@ public class RobotHelper {
 
     public static void delay(int ms) {
         robot.delay(ms);
+    }
+
+    public static void delay(int msMin, int msMax) {
+        robot.delay(msMin + (int)(Math.random() * ((msMin - msMin) + 1)));
     }
 
     public static void mouseMove(int x, int y) {
@@ -76,5 +80,12 @@ public class RobotHelper {
     public static boolean isPixelColor(int x, int y, int r, int g, int b, int delta) {
         Color color = getPixelColor(x, y);
         return Math.abs(color.getRed() - r) + Math.abs(color.getGreen() - g) + Math.abs(color.getBlue() - b) <= delta;
+    }
+
+    public static Dimension getScrenSize() {
+        if (dimension == null) {
+            dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        }
+        return dimension;
     }
 }
