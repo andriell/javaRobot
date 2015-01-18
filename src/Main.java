@@ -81,7 +81,8 @@ public class Main {
             clickBut3(); // отзыв
             waitTeleport();
             clickFlot2();
-            clickBut3(); // быстро
+            //clickBut3(); // быстро
+            clickBut4(); // отмена
             clickFlot1();
             clickBut4(); // ремонт
 
@@ -95,7 +96,8 @@ public class Main {
             clickBut3(); // отзыв
             waitTeleport();
             clickFlot1();
-            clickBut3(); // быстро
+            //clickBut3(); // быстро
+            clickBut4(); // отмена
             clickFlot2();
             clickBut4(); // ремонт
         }
