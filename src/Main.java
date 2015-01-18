@@ -192,11 +192,9 @@ public class Main {
     // во время боя 217,179,179
     public static void waitBattle1Complite() {
         RobotHelper.delay(60000);
-        RobotHelper.delay(60000);
     }
 
     public static void waitBattle2Complite() {
-        RobotHelper.delay(60000);
         RobotHelper.delay(60000);
     }
 
