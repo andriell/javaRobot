@@ -199,7 +199,7 @@ public class Main {
 
     // Ждать пока не начнется битва после нажатия на кнопку бой
     public static void waitBeforeBatleStart() {
-        RobotHelper.delay(20000);
+        RobotHelper.delay(40000);
     }
 
     public static void waitTeleport() {
