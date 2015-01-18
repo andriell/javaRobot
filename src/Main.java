@@ -187,7 +187,7 @@ public class Main {
 
 
     public static void waitBeforeAttack() {
-        RobotHelper.delay(15000, 20000);
+        RobotHelper.delay(1000, 3000);
     }
 
     // Ждать пока не начнется битва после нажатия на кнопку бой
