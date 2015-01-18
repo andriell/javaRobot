@@ -70,7 +70,7 @@ public class Main {
 
 
     public static void run() {
-        while(true) {
+        while (true) {
             clickFlot1();
             selectEnemy();
             waitBeforeAttack();
@@ -171,6 +171,7 @@ public class Main {
             if (RobotHelper.isPixelColor(centerX, centerY, 128, 65, 60, 100)) {
                 break;
             }
+            RobotHelper.delay(200);
         }
         RobotHelper.delay(100);
         RobotHelper.mouseLeftClick(centerX, centerY);
@@ -182,6 +183,7 @@ public class Main {
             if (!RobotHelper.isPixelColor(butFlot1X, butFlot1Y, 217, 179, 179, 20)) {
                 break;
             }
+            RobotHelper.delay(200);
         }
     }
 
@@ -190,6 +192,7 @@ public class Main {
             if (!RobotHelper.isPixelColor(butFlot2X, butFlot2Y, 217, 179, 179, 20)) {
                 break;
             }
+            RobotHelper.delay(200);
         }
     }
 
