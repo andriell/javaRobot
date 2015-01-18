@@ -71,23 +71,33 @@ public class Main {
 
     public static void run() {
         while(true) {
+            clickFlot1();
             selectEnemy();
             waitBeforeAttack();
             clickBut1(); // атака
-
+            waitBeforeBatleStart();
+            waitBattle1Complite();
+            clickFlot1();
+            clickBut3(); // отзыв
+            waitTeleport();
             clickFlot2();
             clickBut3(); // быстро
-            clickPosition2();
-            clickBut2(); // телепорт
+            clickFlot1();
+            clickBut4(); // ремонт
 
+            clickFlot2();
             selectEnemy();
             waitBeforeAttack();
             clickBut1(); // атака
-
+            waitBeforeBatleStart();
+            waitBattle1Complite();
+            clickFlot2();
+            clickBut3(); // отзыв
+            waitTeleport();
             clickFlot1();
             clickBut3(); // быстро
-            clickPosition1();
-            clickBut2(); // телепорт
+            clickFlot2();
+            clickBut4(); // ремонт
         }
     }
 
@@ -151,7 +161,7 @@ public class Main {
         RobotHelper.mouseLeftClick(but3X, but3Y);
     }
 
-    // Отмена ремонта
+    // Ремонт, отмена ремонта
     public static void clickBut4() {
         RobotHelper.mouseLeftClick(but4X, but4Y);
     }
@@ -166,7 +176,26 @@ public class Main {
         RobotHelper.mouseLeftClick(centerX, centerY);
     }
 
+    // во время боя 217,179,179
+    public static void waitBattle1Complite() {
+        while (true) {
+            if (!RobotHelper.isPixelColor(centerX, centerY, 217, 179, 179, 20)) {
+                break;
+            }
+        }
+    }
+
+
     public static void waitBeforeAttack() {
-        RobotHelper.delay(25000, 30000);
+        RobotHelper.delay(15000, 20000);
+    }
+
+    // Ждать пока не начнется битва после нажатия на кнопку бой
+    public static void waitBeforeBatleStart() {
+        RobotHelper.delay(20000);
+    }
+
+    public static void waitTeleport() {
+        RobotHelper.delay(15000);
     }
 }
