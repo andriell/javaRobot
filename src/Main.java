@@ -47,7 +47,7 @@ public class Main {
         but4X = but3X + 96;
         but4Y = but1Y;
 
-        butFlot1X = 1580;
+        butFlot1X = 1596;
         butFlot1Y = 536;
 
         butFlot2X = butFlot1X;
@@ -90,7 +90,7 @@ public class Main {
             waitBeforeAttack();
             clickBut1(); // атака
             waitBeforeBatleStart();
-            waitBattle1Complite();
+            waitBattle2Complite();
             clickFlot2();
             clickBut3(); // отзыв
             waitTeleport();
@@ -179,12 +179,19 @@ public class Main {
     // во время боя 217,179,179
     public static void waitBattle1Complite() {
         while (true) {
-            if (!RobotHelper.isPixelColor(centerX, centerY, 217, 179, 179, 20)) {
+            if (!RobotHelper.isPixelColor(butFlot1X, butFlot1Y, 217, 179, 179, 20)) {
                 break;
             }
         }
     }
 
+    public static void waitBattle2Complite() {
+        while (true) {
+            if (!RobotHelper.isPixelColor(butFlot2X, butFlot2Y, 217, 179, 179, 20)) {
+                break;
+            }
+        }
+    }
 
     public static void waitBeforeAttack() {
         RobotHelper.delay(1000, 3000);
