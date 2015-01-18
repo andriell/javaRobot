@@ -32,7 +32,7 @@ public class RobotHelper {
     }
 
     public static void delay(int msMin, int msMax) {
-        robot().delay(msMin + (int)(Math.random() * ((msMin - msMin) + 1)));
+        robot().delay(msMin + (int)(Math.random() * ((msMax - msMin) + 1)));
     }
 
     public static void mouseMove(int x, int y) {
@@ -84,7 +84,7 @@ public class RobotHelper {
     public static boolean isPixelColor(int x, int y, int r, int g, int b, int delta) {
         Color color = getPixelColor(x, y);
         boolean b1 = Math.abs(color.getRed() - r) + Math.abs(color.getGreen() - g) + Math.abs(color.getBlue() - b) <= delta;
-        System.out.println(String.format("isPixelColor r:%d g:%d b:%d delta:%d result:%B", r, g, b, delta, b1));
+        System.out.println(String.format("isPixelColor %dx%d r:%d g:%d b:%d delta:%d result:%B", x, y, r, g, b, delta, b1));
         return b1;
     }
 
