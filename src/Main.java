@@ -62,6 +62,7 @@ public class Main {
 
 
     public static void main(String[] args) {
+        RobotHelper.delay(5000);
         //testPosition();
         run();
     }
@@ -91,8 +92,6 @@ public class Main {
     }
 
     public static void testPosition() {
-        RobotHelper.delay(5000);
-
         RobotHelper.mouseMove(centerX, centerY);
         RobotHelper.delay(2000);
 
