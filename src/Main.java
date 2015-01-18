@@ -30,8 +30,7 @@ public class Main {
 
 
         while (true) {
-            RobotHelper.mouseMove(senterX, senterX);
-            RobotHelper.delay(100);
+            RobotHelper.mouseMove(senterX, senterY);
             for (int i = 0; i < 30; i++) {
                 RobotHelper.delay(100);
                 if (!RobotHelper.isPixelColor(senterX, senterX, 0, 0, 0, 100)) {
@@ -41,7 +40,6 @@ public class Main {
                     RobotHelper.mouseMove(buttonX, buttonY);
                     RobotHelper.mouseLeftClick();
                 }
-                System.out.println(RobotHelper.getPixelColorDec(senterX, senterX));
             }
         }
     }
