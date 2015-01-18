@@ -179,21 +179,11 @@ public class Main {
 
     // во время боя 217,179,179
     public static void waitBattle1Complite() {
-        while (true) {
-            if (!RobotHelper.isPixelColor(butFlot1X, butFlot1Y, 217, 179, 179, 20)) {
-                break;
-            }
-            RobotHelper.delay(200);
-        }
+        RobotHelper.delay(120000);
     }
 
     public static void waitBattle2Complite() {
-        while (true) {
-            if (!RobotHelper.isPixelColor(butFlot2X, butFlot2Y, 217, 179, 179, 20)) {
-                break;
-            }
-            RobotHelper.delay(200);
-        }
+        RobotHelper.delay(120000);
     }
 
     public static void waitBeforeAttack() {
