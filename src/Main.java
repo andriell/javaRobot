@@ -78,13 +78,18 @@ public class Main {
             waitBeforeBatleStart();
             waitBattle1Complite();
             clickFlot1();
+            RobotHelper.delay(1000);
             clickBut3(); // отзыв
             waitTeleport();
             clickFlot2();
+            RobotHelper.delay(1000);
             //clickBut3(); // быстро
             clickBut4(); // отмена
+            RobotHelper.delay(1000);
             clickFlot1();
+            RobotHelper.delay(1000);
             clickBut4(); // ремонт
+            RobotHelper.delay(1000);
 
             clickFlot2();
             selectEnemy();
@@ -93,13 +98,18 @@ public class Main {
             waitBeforeBatleStart();
             waitBattle2Complite();
             clickFlot2();
+            RobotHelper.delay(1000);
             clickBut3(); // отзыв
             waitTeleport();
             clickFlot1();
+            RobotHelper.delay(1000);
             //clickBut3(); // быстро
             clickBut4(); // отмена
+            RobotHelper.delay(1000);
             clickFlot2();
+            RobotHelper.delay(1000);
             clickBut4(); // ремонт
+            RobotHelper.delay(1000);
         }
     }
 
