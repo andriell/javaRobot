@@ -1,51 +1,172 @@
 import robot.RobotHelper;
 
-import java.awt.*;
-import java.util.Arrays;
-
 public class Main {
+    static int borderTop = 85;
+    static int borderRight = 72;
+    static int borderBottom = 23;
+    static int borderLeft = 0;
 
-    public static void main(String[] args) {
-        /*
-        RobotHelper.mouseMove(10,10);
-        RobotHelper.mouseMove(20,20);
-        System.out.println(RobotHelper.getPixelColorHex(20, 20));
-        System.out.println(Arrays.toString(RobotHelper.getPixelColorRGB(20, 20)));
-        System.out.println(RobotHelper.getPixelColor(20, 20).getRGB());
-        System.out.println(RobotHelper.isPixelColor(20, 20, 214, 204, 140, 10));
+    static int centerX;
+    static int centerY;
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        System.out.println(screenSize.height);
-        System.out.println(screenSize.width);
-*/
+    static int but1X;
+    static int but1Y;
 
-        color();
+    static int but2X;
+    static int but2Y;
+
+    static int but3X;
+    static int but3Y;
+
+    static int but4X;
+    static int but4Y;
+
+    static int butFlot1X;
+    static int butFlot1Y;
+
+    static int butFlot2X;
+    static int butFlot2Y;
+
+    static int position1X;
+    static int position1Y;
+
+    static int position2X;
+    static int position2Y;
+
+    static {
+        centerX = (RobotHelper.getScrenSize().width - borderRight - borderLeft) / 2;
+        centerY = (RobotHelper.getScrenSize().height - borderTop - borderBottom) / 2;
+
+        // 96 * 1.5 = 144
+        but1X = centerX - 144;
+        but1Y = RobotHelper.getScrenSize().height - 68 - borderBottom;
+        but2X = but1X + 96;
+        but2Y = but1Y;
+        but3X = but2X + 96;
+        but3Y = but1Y;
+        but4X = but3X + 96;
+        but4Y = but1Y;
+
+        butFlot1X = 1580;
+        butFlot1Y = 536;
+
+        butFlot2X = butFlot1X;
+        butFlot2Y = butFlot1Y + 44;
+
+        position1X = centerX + 150;
+        position1Y = centerY;
+
+        position2X = centerX + 300;
+        position2Y = centerY;
     }
 
-    public static void color() {
-        int senterX = RobotHelper.getScrenSize().width / 2;
-        int senterY = RobotHelper.getScrenSize().height / 2;
-        int buttonX = senterX - 142;
-        int buttonY = RobotHelper.getScrenSize().height - 68;
 
-        RobotHelper.delay(5000);
-        RobotHelper.mouseMove(senterX, senterY);
-        RobotHelper.delay(5000);
-        RobotHelper.mouseMove(buttonX, buttonY);
+    public static void main(String[] args) {
+        testPosition();
+    }
+
+
+
+    public static void run() {
+        while(true) {
+            selectEnemy();
+            waitBeforeAttack();
+            clickBut1(); // атака
+
+            clickFlot2();
+            clickBut3(); // быстро
+            clickPosition2();
+            clickBut2(); // телепорт
+
+            selectEnemy();
+            waitBeforeAttack();
+            clickBut1(); // атака
+
+            clickFlot1();
+            clickBut3(); // быстро
+            clickPosition1();
+            clickBut2(); // телепорт
+        }
+    }
+
+    public static void testPosition() {
         RobotHelper.delay(5000);
 
+        RobotHelper.mouseMove(centerX, centerY);
+        RobotHelper.delay(2000);
+
+        RobotHelper.mouseMove(but1X, but1Y);
+        RobotHelper.delay(2000);
+        RobotHelper.mouseMove(but2X, but2Y);
+        RobotHelper.delay(2000);
+        RobotHelper.mouseMove(but3X, but3Y);
+        RobotHelper.delay(2000);
+        RobotHelper.mouseMove(but4X, but4Y);
+        RobotHelper.delay(2000);
+
+        RobotHelper.mouseMove(butFlot1X, butFlot1Y);
+        RobotHelper.delay(2000);
+        RobotHelper.mouseMove(butFlot2X, butFlot2Y);
+        RobotHelper.delay(2000);
+
+        RobotHelper.mouseMove(centerX, centerY);
+        RobotHelper.delay(2000);
+
+        RobotHelper.mouseMove(position1X, position1Y);
+        RobotHelper.delay(2000);
+        RobotHelper.mouseMove(position2X, position2Y);
+        RobotHelper.delay(2000);
+
+        RobotHelper.mouseMove(centerX, centerY);
+        RobotHelper.delay(2000);
+    }
+
+    public static void clickFlot1() {
+        RobotHelper.mouseLeftClick(butFlot1X, butFlot1Y);
+    }
+
+    public static void clickFlot2() {
+        RobotHelper.mouseLeftClick(butFlot2X, butFlot2Y);
+    }
+
+    public static void clickPosition1() {
+        RobotHelper.mouseLeftClick(position1X, position1Y);
+    }
+
+    public static void clickPosition2() {
+        RobotHelper.mouseLeftClick(position2X, position2Y);
+    }
+
+    // Атака, Управление
+    public static void clickBut1() {
+        RobotHelper.mouseLeftClick(but1X, but1Y);
+    }
+    // Быстро, телепорт
+    public static void clickBut2() {
+        RobotHelper.mouseLeftClick(but2X, but2Y);
+    }
+
+    // Быстро, отозвать
+    public static void clickBut3() {
+        RobotHelper.mouseLeftClick(but3X, but3Y);
+    }
+
+    // Отмена ремонта
+    public static void clickBut4() {
+        RobotHelper.mouseLeftClick(but4X, but4Y);
+    }
+
+    public static void selectEnemy() {
         while (true) {
-            RobotHelper.mouseMove(senterX, senterY);
-            for (int i = 0; i < 30; i++) {
-                RobotHelper.delay(100);
-                if (!RobotHelper.isPixelColor(senterX, senterY, 0, 0, 0, 100)) {
-                    RobotHelper.delay(200);
-                    RobotHelper.mouseLeftClick();
-                    RobotHelper.delay(25000, 30000);
-                    RobotHelper.mouseMove(buttonX, buttonY);
-                    RobotHelper.mouseLeftClick();
-                }
+            if (RobotHelper.isPixelColor(centerX, centerY, 128, 65, 60, 100)) {
+                break;
             }
         }
+        RobotHelper.delay(100);
+        RobotHelper.mouseLeftClick(centerX, centerY);
+    }
+
+    public static void waitBeforeAttack() {
+        RobotHelper.delay(25000, 30000);
     }
 }

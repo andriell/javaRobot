@@ -41,8 +41,10 @@ public class RobotHelper {
         robot().delay(100);
     }
 
-    public static void mouseLeftClick() {
-        System.out.println("mouseLeftClick");
+    public static void mouseLeftClick(int x, int y) {
+        System.out.println(String.format("mouseLeftClick %dx%d", x, y));
+        robot().mouseMove(x, y);
+        robot().delay(100);
         robot().mousePress(InputEvent.BUTTON1_MASK);
         robot().delay(300);
         robot().mouseRelease(InputEvent.BUTTON1_MASK);
