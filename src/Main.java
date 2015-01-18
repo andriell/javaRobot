@@ -33,7 +33,7 @@ public class Main {
             RobotHelper.mouseMove(senterX, senterY);
             for (int i = 0; i < 30; i++) {
                 RobotHelper.delay(100);
-                if (!RobotHelper.isPixelColor(senterX, senterX, 0, 0, 0, 100)) {
+                if (!RobotHelper.isPixelColor(senterX, senterY, 0, 0, 0, 100)) {
                     RobotHelper.delay(200);
                     RobotHelper.mouseLeftClick();
                     RobotHelper.delay(25000, 30000);
