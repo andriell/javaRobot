@@ -1,4 +1,5 @@
 import robot.RobotHelper;
+import robot.XY;
 
 public class Main {
     static int borderTop = 85;
@@ -67,6 +68,57 @@ public class Main {
         run();
     }
 
+    public static void run2() {
+        while (true) {
+            clickFlot1();
+            waitRepair();
+            clickCenter();
+
+            selectEnemy2();
+            clickBut1(); // атака
+            waitBattle1Complite();
+            clickFlot1();
+            RobotHelper.delay(2000);
+            clickBut3(); // отзыв
+
+            clickBut1(); // атака
+            waitBeforeBatleStart();
+            waitBattle1Complite();
+            clickFlot1();
+            RobotHelper.delay(2000);
+            clickBut3(); // отзыв
+            waitTeleport();
+            clickFlot2();
+            RobotHelper.delay(2000);
+            //clickBut3(); // быстро
+            clickBut4(); // отмена
+            RobotHelper.delay(2000);
+            clickFlot1();
+            RobotHelper.delay(2000);
+            clickBut4(); // ремонт
+            RobotHelper.delay(2000);
+
+            clickFlot2();
+            selectEnemy();
+            waitBeforeAttack();
+            clickBut1(); // атака
+            waitBeforeBatleStart();
+            waitBattle2Complite();
+            clickFlot2();
+            RobotHelper.delay(2000);
+            clickBut3(); // отзыв
+            waitTeleport();
+            clickFlot1();
+            RobotHelper.delay(2000);
+            //clickBut3(); // быстро
+            clickBut4(); // отмена
+            RobotHelper.delay(2000);
+            clickFlot2();
+            RobotHelper.delay(2000);
+            clickBut4(); // ремонт
+            RobotHelper.delay(2000);
+        }
+    }
 
 
     public static void run() {
@@ -151,6 +203,10 @@ public class Main {
         RobotHelper.mouseLeftClick(butFlot2X, butFlot2Y);
     }
 
+    public static void clickCenter() {
+        RobotHelper.mouseLeftClick(centerX, centerY);
+    }
+
     public static void clickPosition1() {
         RobotHelper.mouseLeftClick(position1X, position1Y);
     }
@@ -189,8 +245,29 @@ public class Main {
         RobotHelper.mouseLeftClick(centerX, centerY);
     }
 
+    public static void selectEnemy2() {
+        int x1 = centerX - centerX / 2;
+        int y1 = centerY - centerY / 2;
+
+        int x2 = centerX + centerX / 2;
+        int y2 = centerY + centerY / 2;
+
+        while (true) {
+            XY xy = RobotHelper.getColorXY(x1, y1, x2, y2, 85, 88, 101, 10);
+            //RobotHelper.getColorXY(x1, y1, x2, y2, 63, 65, 76, 10);
+            if (xy != null) {
+                RobotHelper.mouseLeftClick(xy.x, xy.y);
+                return;
+            }
+            RobotHelper.delay(2000);
+        }
+    }
+
     // во время боя 217,179,179
     public static void waitBattle1Complite() {
+        RobotHelper.delay(50000);
+        RobotHelper.delay(50000);
+        RobotHelper.delay(50000);
         RobotHelper.delay(50000);
         RobotHelper.delay(50000);
     }
@@ -211,5 +288,19 @@ public class Main {
 
     public static void waitTeleport() {
         RobotHelper.delay(15000);
+    }
+
+    // Ждать пока ремонт закончится
+    public static void waitRepair() {
+        while (true) {
+            if (!isRepair()) {
+                break;
+            }
+            RobotHelper.delay(1000);
+        }
+    }
+    // Ремонт идет
+    public static boolean isRepair() {
+        return RobotHelper.isPixelColor(but3X, but3Y, 103, 92, 69, 50);
     }
 }

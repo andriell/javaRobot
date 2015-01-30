@@ -90,6 +90,22 @@ public class RobotHelper {
         return b1;
     }
 
+    public static XY getColorXY(int x1, int y1, int x2, int y2, int r, int g, int b, int delta) {
+        return getColorXY(x1, y1, x2, y2, r, g, b, 2);
+    }
+
+    public static XY getColorXY(int x1, int y1, int x2, int y2, int r, int g, int b, int delta, int step) {
+        for (int x = x1; x <= x2; x += step) {
+            for (int y = x1; y <= x2; y += step) {
+                boolean isPixelColor = isPixelColor(x, y, r, g, b, delta);
+                if (isPixelColor) {
+                    return new XY(x, y);
+                }
+            }
+        }
+        return null;
+    }
+
     public static Dimension getScrenSize() {
         if (dimension == null) {
             dimension = Toolkit.getDefaultToolkit().getScreenSize();
